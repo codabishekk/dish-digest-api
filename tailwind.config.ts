@@ -52,6 +52,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				recipe: {
+					warm: 'hsl(var(--recipe-warm))',
+					'warm-light': 'hsl(var(--recipe-warm-light))',
+					sage: 'hsl(var(--recipe-sage))',
+					cream: 'hsl(var(--recipe-cream))',
+					earth: 'hsl(var(--recipe-earth))',
+					gold: 'hsl(var(--recipe-gold))'
+				},
+				star: {
+					filled: 'hsl(var(--star-filled))',
+					empty: 'hsl(var(--star-empty))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -67,6 +79,17 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-warm': 'var(--gradient-warm)',
+				'gradient-subtle': 'var(--gradient-subtle)'
+			},
+			boxShadow: {
+				recipe: 'var(--shadow-recipe)',
+				card: 'var(--shadow-card)'
+			},
+			transitionProperty: {
+				smooth: 'var(--transition-smooth)'
 			},
 			keyframes: {
 				'accordion-down': {
