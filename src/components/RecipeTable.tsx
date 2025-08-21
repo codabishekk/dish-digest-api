@@ -175,10 +175,10 @@ const RecipeTable = () => {
   const [limit, setLimit] = useState(15);
   const [filters, setFilters] = useState({
     title: '',
-    cuisine: '',
-    rating: '',
-    total_time: '',
-    calories: ''
+    cuisine: 'all',
+    rating: 'all',
+    total_time: 'all',
+    calories: 'all'
   });
 
   const totalPages = Math.ceil(filteredRecipes.length / limit);
@@ -194,13 +194,13 @@ const RecipeTable = () => {
       );
     }
 
-    if (filters.cuisine) {
+    if (filters.cuisine && filters.cuisine !== 'all') {
       filtered = filtered.filter(recipe => 
         recipe.cuisine.toLowerCase() === filters.cuisine.toLowerCase()
       );
     }
 
-    if (filters.rating) {
+    if (filters.rating && filters.rating !== 'all') {
       const [operator, value] = filters.rating.split('');
       const numValue = parseFloat(value);
       filtered = filtered.filter(recipe => {
@@ -214,7 +214,7 @@ const RecipeTable = () => {
       });
     }
 
-    if (filters.total_time) {
+    if (filters.total_time && filters.total_time !== 'all') {
       const [operator, ...rest] = filters.total_time.split('');
       const value = parseInt(rest.join(''));
       filtered = filtered.filter(recipe => {
@@ -228,7 +228,7 @@ const RecipeTable = () => {
       });
     }
 
-    if (filters.calories) {
+    if (filters.calories && filters.calories !== 'all') {
       const [operator, ...rest] = filters.calories.split('');
       const value = parseInt(rest.join(''));
       filtered = filtered.filter(recipe => {
@@ -249,10 +249,10 @@ const RecipeTable = () => {
   const clearFilters = () => {
     setFilters({
       title: '',
-      cuisine: '',
-      rating: '',
-      total_time: '',
-      calories: ''
+      cuisine: 'all',
+      rating: 'all',
+      total_time: 'all',
+      calories: 'all'
     });
   };
 
@@ -298,7 +298,7 @@ const RecipeTable = () => {
                 <SelectValue placeholder="Any cuisine" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Any cuisine</SelectItem>
+                <SelectItem value="all">Any cuisine</SelectItem>
                 {uniqueCuisines.map(cuisine => (
                   <SelectItem key={cuisine} value={cuisine}>{cuisine}</SelectItem>
                 ))}
@@ -316,7 +316,7 @@ const RecipeTable = () => {
                 <SelectValue placeholder="Any rating" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Any rating</SelectItem>
+                <SelectItem value="all">Any rating</SelectItem>
                 <SelectItem value=">4.5">4.5+ stars</SelectItem>
                 <SelectItem value=">4.0">4.0+ stars</SelectItem>
                 <SelectItem value=">3.5">3.5+ stars</SelectItem>
@@ -334,7 +334,7 @@ const RecipeTable = () => {
                 <SelectValue placeholder="Any time" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Any time</SelectItem>
+                <SelectItem value="all">Any time</SelectItem>
                 <SelectItem value="<30">Under 30 min</SelectItem>
                 <SelectItem value="<60">Under 1 hour</SelectItem>
                 <SelectItem value="<120">Under 2 hours</SelectItem>
@@ -352,7 +352,7 @@ const RecipeTable = () => {
                 <SelectValue placeholder="Any calories" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Any calories</SelectItem>
+                <SelectItem value="all">Any calories</SelectItem>
                 <SelectItem value="<300">Under 300</SelectItem>
                 <SelectItem value="<400">Under 400</SelectItem>
                 <SelectItem value="<500">Under 500</SelectItem>
